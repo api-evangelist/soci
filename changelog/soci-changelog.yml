@@ -1,0 +1,67 @@
+generated: '2026-08-05'
+method: searched
+source: https://www.soci.ai/release-notes/
+url: https://www.soci.ai/release-notes/
+scheme: dated-product-release-notes
+cadence: monthly, with additional seasonal ("Spring '26", "Winter '26") roll-ups
+current_version: null
+api_versioned: false
+note: >-
+  SOCi publishes a public, dated product release-notes stream, but it is a
+  product changelog rather than an API changelog: entries are organized by
+  product area (Search, Social, Core) and name UI features. API changes appear
+  only as passing mentions inside feature notes — the June '26 notes, for
+  example, say a new Google Business Profile secondary-phone-number field is
+  manageable "via UI, API, and CSV" without naming an endpoint, field, or
+  version. There is no separate API changelog, no breaking-change register, and
+  no version numbers. Third-party integrators are pointed at the customer-only
+  reference at uni-select.meetsoci.com/docs for "the latest API changes".
+entries:
+- title: SOCi June '26 Release Notes
+  date: '2026-06-22'
+  url: https://www.soci.ai/blog/soci-june-26-release-notes/
+  areas:
+  - Search
+  - Social
+  - Core
+  breaking:
+  - 'Google Q&A Sunset: Q&A management removed following Google retiring its Q&A API'
+  additions:
+  - 'Search: Opening Hours Approval — role-based edit permissions with an approval
+    workflow before publishing to Google'
+  - 'Search: Location Status Filter — Smart Group field segmenting Open / Temporarily
+    Closed / Permanently Closed'
+  - 'Search: Google Business Profile secondary phone number, manageable via UI, API
+    and CSV'
+  - 'Social: Custom disclaimer sections for lead forms'
+  - 'Social: Configurable posting buffer (0–31 days) at account, group and location
+    level'
+  - 'Core: AI image-compliance scanning of image text across Listings and Engagements'
+- title: SOCi May '26 Release Notes
+  date: '2026-05-26'
+  url: https://www.soci.ai/blog/soci-may-26-release-notes/
+- title: SOCi Spring '26 Release Notes
+  date: '2026-04-29'
+  url: https://www.soci.ai/blog/soci-spring-26-release-notes/
+- title: SOCi April '26 Release Notes
+  date: '2026-04-27'
+  url: https://www.soci.ai/blog/soci-april-26-release-notes/
+- title: SOCi March '26 Release Notes
+  url: https://www.soci.ai/blog/soci-march-26-release-notes/
+- title: SOCi February '26 Release Notes
+  url: https://www.soci.ai/blog/soci-february-26-release-notes/
+- title: SOCi Winter '26 Release Notes
+  url: https://www.soci.ai/blog/soci-winter-26-release-notes/
+- title: SOCi Fall '25 Release Notes
+  url: https://www.soci.ai/blog/soci-fall-25-release-notes/
+- title: SOCi Summer '25 Release Notes
+  url: https://www.soci.ai/blog/soci-summer-25-release-notes/
+- title: SOCi Spring '25 Release Notes
+  url: https://www.soci.ai/blog/soci-spring-25-release-notes/
+- title: SOCi Winter '24 Release Notes
+  url: https://www.soci.ai/blog/soci-winter-24-release-notes/
+x-evidence:
+  fetched: '2026-08-05'
+  url: https://www.soci.ai/release-notes/
+  http_status: 200
+  window: 'recent entries only; the index paginates at /release-notes/page/2/'

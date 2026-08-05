@@ -42,5 +42,21 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-SOCi is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/soci_stock/
+SOCi, Inc. is a San Diego-based marketing platform for multi-location brands, franchises and
+enterprises, marketed as an "agentic workforce" for localized marketing. The SOCi Genius platform
+centralizes local search and listings management, reputation and review management, social publishing
+and engagement, local advertising, surveys and reporting across 140+ connected platforms.
+
+**API posture (probed 2026-08-05).** SOCi runs a live REST API at `https://app.meetsoci.com/api`
+authenticated with a per-user SOCi API key issued from User Settings inside the platform. The endpoint
+reference at `https://uni-select.meetsoci.com/docs/index.html` serves the SOCi application sign-in page
+to anonymous visitors, and `developers.meetsoci.com` redirects to the customer login — so the
+operation-level contract is customer-only. No OpenAPI, GraphQL SDL, MCP server, A2A agent card,
+webhook catalog, first-party SDK or `/.well-known/` document was found on any SOCi host.
+
+- Website: https://www.soci.ai/
+- Platform: https://www.soci.ai/platform/
+- Release notes: https://www.soci.ai/release-notes/
+- Trust center: https://trust.meetsoci.com/
+- Information security: https://www.soci.ai/information-security/
+- Secondary-market listing: https://forgeglobal.com/soci_stock/

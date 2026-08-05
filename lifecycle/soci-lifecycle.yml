@@ -1,0 +1,55 @@
+generated: '2026-08-05'
+method: searched
+source: https://www.soci.ai/sla/
+versioning:
+  scheme: uri-path
+  observed_prefix: /api/
+  current: null
+  docs: null
+  note: >-
+    The API root at https://app.meetsoci.com/api rejects both /api/v1/ and /api/v2/
+    with "Invalid API endpoint", so the public surface is not URI-version
+    segmented at the top level. No versioning policy is published. Platform
+    releases are named by month/season ("SOCi June '26 Release Notes"), not by an
+    API version number.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: >-
+    No deprecation policy, no Sunset/Deprecation (RFC 8594) commitment, and no API
+    end-of-life notice was found on any public SOCi page. No Deprecation pointer
+    is wired.
+sla:
+  url: https://www.soci.ai/sla/
+  uptime_target: 99.5%
+  measurement_window: calendar month
+  service_credits: up to 15% of monthly fees, claimed within one week
+  support_targets:
+    P0_critical: 4 hours target resolution
+    P1_high: 1 business day
+    P2_medium: 2 weeks
+    P3_low: case by case
+  maintenance_window: 11:00 p.m. ET to 6:00 a.m. ET on weekends, typically one or two
+    windows per month
+status_page: null
+status_page_note: >-
+  No status page was found. status.meetsoci.com returns 404. soci.statuspage.io
+  returns HTTP 200 but the body is Atlassian's own Statuspage marketing page —
+  byte-identical to the response for a deliberately non-existent subdomain
+  control, so it is a soft-200, not a SOCi status page. No StatusPage pointer is
+  wired.
+release_notes: https://www.soci.ai/release-notes/
+deprecated_operations: []
+evidence:
+- url: https://www.soci.ai/sla/
+  status: 200
+- url: https://status.meetsoci.com/
+  status: 404
+- url: https://soci.statuspage.io/
+  status: 200
+  rejected: soft-200; identical body to a non-existent-subdomain control
+- url: https://app.meetsoci.com/api/v1/
+  status: 200
+  body: '{"status":"error","error":"Invalid API endpoint: v1"}'
+x-evidence:
+  fetched: '2026-08-05'

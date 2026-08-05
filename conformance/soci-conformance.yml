@@ -1,0 +1,62 @@
+generated: '2026-08-05'
+method: searched
+source: https://www.soci.ai/information-security/
+note: >-
+  SOCi publishes no OpenAPI, so nothing here is derived from a spec. Every entry
+  below is either a compliance claim SOCi makes on its own public pages or a
+  negative result recorded from a live anonymous probe.
+standards:
+- id: soc2-type-ii
+  conforms: true
+  evidence: Published on https://www.soci.ai/information-security/ and https://trust.meetsoci.com/
+- id: soc3
+  conforms: true
+  evidence: Public SOC 3 examination report linked from https://www.soci.ai/information-security/
+- id: iso-27001
+  conforms: true
+  evidence: 'ISO 27001:2013 stated on https://www.soci.ai/information-security/; ISO/IEC
+    27001 listed on the trust center'
+- id: iso-27701
+  conforms: true
+  evidence: Listed on https://trust.meetsoci.com/
+- id: iso-42001
+  conforms: true
+  evidence: 'ISO/IEC 42001:2023 (AI management systems) listed on https://trust.meetsoci.com/'
+- id: gdpr
+  conforms: true
+  evidence: Global Data Processing Addendum published at https://www.soci.ai/dpa/ with
+    a subprocessor register at https://www.soci.ai/subprocessors/
+- id: hipaa
+  conforms: partial
+  evidence: A HIPAA report is offered on the trust center; SOCi does not claim a HIPAA
+    certification
+- id: pci-dss
+  conforms: false
+  evidence: Not claimed on any public SOCi page
+- id: fedramp
+  conforms: false
+  evidence: Not claimed on any public SOCi page
+- id: oauth2
+  conforms: false
+  evidence: 'No OAuth surface found; API auth is a static per-user API key (see authentication/soci-authentication.yml).
+    /.well-known/oauth-authorization-server returned 404 on app.meetsoci.com'
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returned 404 on app.meetsoci.com and
+    www.soci.ai
+- id: openapi
+  conforms: false
+  evidence: 'No OpenAPI/Swagger document found on any host; the reference at uni-select.meetsoci.com/docs/index.html
+    serves the customer sign-in page anonymously'
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Observed error envelope is a bespoke JSON object {status, error, error_tracking_id}
+    served with HTTP 200, not application/problem+json (see errors/soci-problem-types.yml)'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on www.soci.ai and www.meetsoci.com
+- id: rfc8615-well-known
+  conforms: false
+  evidence: No well-known document served on any host; see well-known/soci-well-known.yml
+x-evidence:
+  fetched: '2026-08-05'

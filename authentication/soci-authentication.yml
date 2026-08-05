@@ -1,0 +1,72 @@
+generated: '2026-08-05'
+method: searched
+source: https://uni-select.meetsoci.com/docs/index.html
+docs: https://uni-select.meetsoci.com/docs/index.html
+docs_access: customer-only
+note: >-
+  0-working/derive-authentication.py could not be used: SOCi publishes no OpenAPI,
+  so there are no securitySchemes to aggregate. The model below is assembled from
+  what SOCi's own surfaces state plus live anonymous probes of the API root.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - unknown
+  oauth2_flows: []
+schemes:
+- name: SOCi API Key
+  type: apiKey
+  in: unknown
+  parameter_name: unknown
+  issuance: >-
+    Self-service inside the platform — a signed-in user generates a SOCi API Key
+    from User Settings, reached from the menu at the top right of app.meetsoci.com.
+  additional_parameters:
+  - name: Organization Name
+    description: The customer's SOCi organization name, required alongside the key
+  - name: Domain
+    description: The customer's SOCi platform domain (e.g. app.meetsoci.com)
+  rotation_policy: not published
+  scopes: none
+  sources:
+  - https://improvado.io/docs/soci
+  - https://uni-select.meetsoci.com/docs/index.html
+oauth:
+  supported: false
+  evidence:
+  - url: https://app.meetsoci.com/.well-known/oauth-authorization-server
+    status: 404
+  - url: https://app.meetsoci.com/.well-known/openid-configuration
+    status: 404
+end_user_login:
+  url: https://app.meetsoci.com/admin/login
+  social_login_buttons:
+  - Google
+  - Apple
+  note: End-user platform sign-in only; not an API authorization surface.
+gaps:
+- The key placement (header vs query parameter) and the header name are not stated
+  on any public page — an integrator cannot write a first call without a customer
+  account.
+- No OAuth 2.0 / OIDC surface, so no delegated third-party authorization and no scoped
+  consent; every integration runs as a full-privilege user key.
+- No scope or permission model is published, so scopes/ is intentionally absent.
+- No key-rotation, expiry or revocation policy is published.
+evidence:
+- url: https://uni-select.meetsoci.com/docs/index.html
+  status: 200
+  note: >-
+    Returns the SOCi application sign-in page (title "SOCi - Social Media
+    Management... Solved", an <h2>Sign In</h2> form) to anonymous visitors. Every
+    path under /docs/ returns the same 355,453-byte body, so the endpoint
+    reference itself is unreachable without a customer login.
+- url: https://app.meetsoci.com/api/v1/
+  status: 200
+  note: 'Live JSON error envelope returned anonymously: {"status":"error","error":"Invalid
+    API endpoint: v1"}'
+- url: https://developers.meetsoci.com/
+  status: 302
+  note: Redirects to https://app.meetsoci.com/admin/login?redirect_to=L2RldmVsb3BlcnMv
+    (base64 "/developers/")
+x-evidence:
+  fetched: '2026-08-05'

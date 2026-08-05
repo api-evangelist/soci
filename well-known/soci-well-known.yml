@@ -1,0 +1,70 @@
+generated: '2026-08-05'
+method: probed
+source: live GET of /.well-known/* on every SOCi host in apis.yml
+summary: >-
+  No RFC 8615 well-known document was found on any SOCi host. Both www.soci.ai
+  (WordPress) and www.meetsoci.com answer /.well-known/* with an HTML page rather
+  than a document — meetsoci.com returns HTTP 200 with the site HTML for every
+  path under /.well-known/, which is a catch-all soft-200 and NOT a discovery
+  document. Every candidate below was rejected on body inspection (content-type
+  text/html, body begins <!DOCTYPE html>). No WellKnown, SecurityTxt or
+  APICatalog pointer is wired, because nothing machine-readable was served.
+documents: []
+probes:
+- host: https://www.soci.ai
+  path: /.well-known/security.txt
+  status: 404
+  content_type: text/html
+- host: https://www.soci.ai
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: text/html
+- host: https://www.soci.ai
+  path: /.well-known/api-catalog
+  status: 404
+  content_type: text/html
+- host: https://www.soci.ai
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: text/html
+- host: https://www.soci.ai
+  path: /.well-known/agent.json
+  status: 404
+  content_type: text/html
+- host: https://www.meetsoci.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: text/html
+- host: https://www.meetsoci.com
+  path: /.well-known/agent-card.json
+  status: 200
+  content_type: text/html
+  rejected: soft-200 catch-all; body is the marketing site HTML, not JSON
+- host: https://www.meetsoci.com
+  path: /.well-known/agent.json
+  status: 200
+  content_type: text/html
+  rejected: soft-200 catch-all; identical byte length to the agent-card.json response
+- host: https://app.meetsoci.com
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: text/html
+- host: https://app.meetsoci.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: text/html
+- host: https://app.meetsoci.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: text/html
+- host: https://api.meetsoci.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: text/html
+x-evidence:
+  fetched: '2026-08-05'
+  control_path_used: true
+  note: >-
+    meetsoci.com was verified as a catch-all by comparing two distinct
+    /.well-known/ paths — both returned HTTP 200 with an identical 192,988-byte
+    HTML body, so the 200 carries no evidence of a published document.

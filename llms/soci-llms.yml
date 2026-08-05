@@ -1,0 +1,44 @@
+generated: '2026-08-05'
+method: searched
+source: https://www.soci.ai/llms.txt
+file: soci-llms.txt
+http_status: 200
+content_type: text/plain
+bytes: 9198
+generator: Yoast SEO v25.5 (WordPress)
+scope: marketing site only
+covers:
+- Posts
+- Pages
+- Insights
+- News
+- Knowledge Articles
+- Events
+- Integrations
+- Categories
+covers_api: false
+defect:
+  id: staging-hostname-leak
+  severity: high
+  summary: >-
+    Every link in the published llms.txt points at the WordPress staging
+    hostname soci-ai-new.local instead of www.soci.ai — including the sitemap
+    reference (https://soci-ai-new.local/sitemap_index.xml) and all 40+ content
+    links. A .local hostname is not publicly resolvable, so an agent that follows
+    this file resolves nothing. The file advertises SOCi's content surface to LLMs
+    and then makes every entry unfetchable.
+  remedy: >-
+    Regenerate the Yoast llms.txt after correcting the WordPress site URL, or set
+    the canonical home URL so Yoast emits https://www.soci.ai/ links.
+  also_visible_in: >-
+    The Integrations section additionally lists four near-duplicate Bing entries
+    with mangled titles ("Buing", "Bding", "Bcing", "Baing") at
+    /integration/bing-5/, /bing-8/, /bing-12/, /bing-13/ — duplicate CMS records
+    surfaced verbatim to LLMs.
+x-evidence:
+  fetched: '2026-08-05'
+  url: https://www.soci.ai/llms.txt
+  http_status: 200
+  note: >-
+    https://www.meetsoci.com/llms.txt returns 404; the file is served only from
+    the soci.ai host. Saved verbatim, byte-for-byte, including its BOM.

@@ -1,23 +1,127 @@
 aid: soci
 name: SOCi
-description: 'SOCi is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'SOCi, Inc. is a San Diego-based marketing platform for multi-location
+  brands, franchises and enterprises, marketed as an "agentic workforce" for localized
+  marketing. The SOCi Genius platform centralizes local search and listings management,
+  reputation and review management, social publishing and engagement, local advertising,
+  surveys and reporting across 140+ connected platforms including Google Business Profile,
+  Facebook, Instagram, Yelp, Apple Business Connect and TikTok. SOCi exposes a REST
+  API at app.meetsoci.com/api authenticated with a per-user API key issued from the
+  platform''s User Settings screen, but the developer reference is served only to
+  signed-in customers; there is no public developer portal, published OpenAPI, or
+  self-serve sign-up.'
 url: https://raw.githubusercontent.com/api-evangelist/soci/refs/heads/main/apis.yml
+image: https://sociai-www.nyc3.digitaloceanspaces.com/wp-content/uploads/2024/07/27120043/black-text-logo-scoi.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-05'
 modified: '2026-08-05'
 tags:
 - Company
-apis: []
+- Marketing
+- Local Marketing
+- Multi-Location
+- Reputation Management
+- Listings Management
+- Social Media Management
+- Reviews
+- Franchise
+- Local SEO
+apis:
+- name: SOCi Platform API
+  description: 'SOCi''s customer-facing REST API, reachable at https://app.meetsoci.com/api.
+    Authentication uses a per-user SOCi API key issued from User Settings inside the
+    platform, together with the customer''s organization name and platform domain.
+    The endpoint reference is published at https://uni-select.meetsoci.com/docs/index.html
+    but that URL serves the SOCi application sign-in page to anonymous visitors, so
+    the operation-level contract is customer-only. Anonymous probing of the API root
+    confirms the service is live and returns a JSON error envelope.'
+  humanURL: https://uni-select.meetsoci.com/docs/index.html
+  baseURL: https://app.meetsoci.com/api
+  tags:
+  - Local Marketing
+  - Reviews
+  - Listings
+  - Reporting
+  properties:
+  - type: Authentication
+    url: authentication/soci-authentication.yml
+  - type: Conventions
+    url: conventions/soci-conventions.yml
+  - type: ErrorCatalog
+    url: errors/soci-problem-types.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/soci-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/soci_stock/
+  url: https://www.soci.ai/
+- type: Platform
+  url: https://www.soci.ai/platform/
+- type: About
+  url: https://www.soci.ai/about/
+- type: Blog
+  url: https://www.soci.ai/blog/
+- type: ChangeLog
+  url: https://www.soci.ai/release-notes/
+- type: ChangeLog
+  url: changelog/soci-changelog.yml
+- type: Login
+  url: https://app.meetsoci.com/admin/login
+- type: Support
+  url: https://support.meetsoci.com/hc/en-us
+- type: GitHubOrganization
+  url: https://github.com/meetsoci
+- type: Integrations
+  url: https://www.soci.ai/integrations/
+- type: TermsOfService
+  url: https://www.soci.ai/terms-of-service/
+- type: PrivacyPolicy
+  url: https://www.soci.ai/privacy-notice/
+- type: DataProcessingAgreement
+  url: https://www.soci.ai/dpa/
+- type: Subprocessors
+  url: https://www.soci.ai/subprocessors/
+- type: SLA
+  url: https://www.soci.ai/sla/
+- type: Security
+  url: https://www.soci.ai/information-security/
+- type: Compliance
+  url: https://www.soci.ai/information-security/
+- type: TrustCenter
+  url: security/soci-trust-center.yml
+- type: LLMsTxt
+  url: llms/soci-llms.txt
+- type: Lifecycle
+  url: lifecycle/soci-lifecycle.yml
+- type: Conformance
+  url: conformance/soci-conformance.yml
+- type: VulnerabilityDisclosure
+  url: security/soci-vulnerability-disclosure.yml
+- type: Trust
+  url: https://trust.meetsoci.com/
+x-enrichment:
+  date: '2026-08-05'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: SOCi's endpoint reference at uni-select.meetsoci.com/docs/index.html returns
+    the SOCi application sign-in page to anonymous visitors, and developers.meetsoci.com
+    302s to app.meetsoci.com/admin/login, so the live API at app.meetsoci.com/api is
+    reachable but its operation contract is published only to signed-in customers.
+  evidence:
+  - url: https://uni-select.meetsoci.com/docs/index.html
+    status: 200
+  - url: https://developers.meetsoci.com/
+    status: 302
+  - url: https://app.meetsoci.com/api/reviews
+    status: 200
+  checked: '2026-08-05'

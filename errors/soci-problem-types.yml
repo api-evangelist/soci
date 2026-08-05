@@ -1,0 +1,59 @@
+generated: '2026-08-05'
+method: probed
+source: live anonymous requests to https://app.meetsoci.com/api/
+format: bespoke-json
+rfc9457: false
+media_type: application/json
+note: >-
+  SOCi publishes no OpenAPI and no public error reference, so this catalog is not
+  derived from 4xx/5xx spec responses and is not copied from documentation. It
+  records only error responses observed directly on the wire. It is therefore a
+  partial catalog — the authenticated error surface is unknown.
+envelope:
+  fields:
+  - name: status
+    type: string
+    value_on_error: error
+  - name: error
+    type: string
+    description: Human-readable message
+  - name: error_tracking_id
+    type: string
+    description: Opaque server-side correlation id, format error_<hex>.<hex>
+  http_status: 200
+  concern: >-
+    Errors are signalled in the body while the HTTP status stays 200. There is no
+    machine-readable error code, no type URI, and no problem+json content type, so
+    error handling cannot be generated from any contract and agent runtimes that
+    branch on HTTP status will read every failure as a success.
+problems:
+- title: Invalid API endpoint
+  http_status: 200
+  error: 'Invalid API endpoint: <segment>'
+  meaning: The first path segment after /api/ is not a recognised endpoint namespace.
+  observed_at: https://app.meetsoci.com/api/zzcontrolzz
+  code: null
+  type: null
+- title: Invalid API function
+  http_status: 200
+  error: Invalid API function.
+  meaning: The endpoint namespace is recognised but no valid function segment was supplied.
+  observed_at: https://app.meetsoci.com/api/reviews
+  code: null
+  type: null
+- title: Service outage
+  http_status: 503
+  error: SOCi-branded HTML outage page ("Service Outage - SOCi")
+  meaning: Upstream service unavailable; returned as HTML, not JSON, so a JSON client
+    breaks on parse.
+  observed_at: https://api.meetsoci.com/graphql
+  code: null
+  type: null
+gaps:
+- No stable error code or type URI on any error — only an English message string.
+- No published error reference to map messages to remediation.
+- Content type is not consistent across failures (JSON for API errors, HTML for the
+  503 outage page).
+x-evidence:
+  fetched: '2026-08-05'
+  control_path_used: true

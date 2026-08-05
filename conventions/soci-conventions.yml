@@ -1,0 +1,97 @@
+generated: '2026-08-05'
+method: probed
+source: live anonymous requests to https://app.meetsoci.com/api/
+note: >-
+  SOCi publishes no OpenAPI and no public API guide, so nothing here is derived
+  from a spec or copied from docs. Every statement below was observed on the wire
+  against the live API root, or is explicitly recorded as unknown. Absence is
+  recorded as absence — it is not inferred to be present.
+base:
+  url: https://app.meetsoci.com/api
+  transport: https
+  content_type: application/json
+routing:
+  shape: /api/<endpoint>/<function>
+  evidence: >-
+    An unrecognised first path segment returns "Invalid API endpoint: <segment>",
+    while a recognised endpoint with no second segment returns "Invalid API
+    function." — two distinguishable messages, verified against a deliberately
+    invented control segment.
+  verified_endpoints:
+  - reviews
+  - listings
+  - surveys
+  - reports
+  verified_endpoints_note: >-
+    These four first-path segments returned "Invalid API function." rather than
+    "Invalid API endpoint", which distinguishes them from the control. This is a
+    partial, probed observation of the namespace — NOT a complete endpoint list,
+    and no operation, method, parameter or payload is known. Operation-level
+    detail requires the customer-only reference.
+authentication:
+  style: static per-user API key
+  detail: authentication/soci-authentication.yml
+error_envelope:
+  format: bespoke JSON
+  media_type: application/json
+  http_status_on_error: 200
+  shape:
+    status: error
+    error: human-readable message string
+    error_tracking_id: opaque correlation id, e.g. error_<hex>.<hex>
+  rfc9457: false
+  detail: errors/soci-problem-types.yml
+  note: >-
+    Errors are returned with HTTP 200 and an in-body status field rather than a
+    4xx/5xx status code. Clients cannot rely on HTTP semantics and must parse the
+    body on every call. This also defeats generic HTTP retry/circuit-breaker
+    middleware and most agent tool runtimes, which key on status code.
+request_tracing:
+  request_id_header: none observed
+  server_correlation_id: error_tracking_id, present in error bodies only
+  note: >-
+    No X-Request-Id or equivalent was returned on any observed response, so a
+    successful call carries no correlation handle a caller can quote in support.
+idempotency:
+  supported: unknown
+  documented: false
+  note: >-
+    No idempotency key header or parameter is documented anywhere on SOCi's public
+    surface, and none could be observed anonymously. No Idempotency pointer is
+    wired — this pipeline emits that pointer only against a documented
+    idempotency contract.
+pagination:
+  style: unknown
+  documented: false
+rate_limits:
+  documented: false
+  headers_observed: none
+versioning:
+  style: none at the URI root
+  evidence: '/api/v1/ and /api/v2/ are both rejected as invalid endpoints'
+  detail: lifecycle/soci-lifecycle.yml
+webhooks:
+  documented: false
+  note: >-
+    No public webhook or event catalog was found, so asyncapi/ is intentionally
+    absent rather than fabricated.
+evidence:
+- url: https://app.meetsoci.com/api/reviews
+  status: 200
+  body: '{"status":"error","error":"Invalid API function."}'
+- url: https://app.meetsoci.com/api/listings
+  status: 200
+  body: '{"status":"error","error":"Invalid API function."}'
+- url: https://app.meetsoci.com/api/surveys
+  status: 200
+  body: '{"status":"error","error":"Invalid API function."}'
+- url: https://app.meetsoci.com/api/reports
+  status: 200
+  body: '{"status":"error","error":"Invalid API function."}'
+- url: https://app.meetsoci.com/api/zzcontrolzz
+  status: 200
+  body: '{"status":"error","error":"Invalid API endpoint: zzcontrolzz"}'
+  role: control
+x-evidence:
+  fetched: '2026-08-05'
+  control_path_used: true
