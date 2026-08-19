@@ -14,7 +14,7 @@ url: https://raw.githubusercontent.com/api-evangelist/soci/refs/heads/main/apis.
 image: https://sociai-www.nyc3.digitaloceanspaces.com/wp-content/uploads/2024/07/27120043/black-text-logo-scoi.svg
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-05'
 modified: '2026-08-05'
 tags:
