@@ -11,6 +11,17 @@ description: 'SOCi, Inc. is a San Diego-based marketing platform for multi-locat
   signed-in customers; there is no public developer portal, published OpenAPI, or
   self-serve sign-up.'
 url: https://raw.githubusercontent.com/api-evangelist/soci/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://sociai-www.nyc3.digitaloceanspaces.com/wp-content/uploads/2024/07/27120043/black-text-logo-scoi.svg
 x-type: company
 x-source: harvest:secondary-market
