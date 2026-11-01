@@ -64,21 +64,94 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-SOCi, Inc. is a San Diego-based marketing platform for multi-location brands, franchises and
-enterprises, marketed as an "agentic workforce" for localized marketing. The SOCi Genius platform
-centralizes local search and listings management, reputation and review management, social publishing
-and engagement, local advertising, surveys and reporting across 140+ connected platforms.
+SOCi, Inc. is a San Diego-based marketing platform for multi-location brands, franchises and enterprises, marketed as an "agentic workforce" for localized marketing. The SOCi Genius platform centralizes local search and listings management, reputation and review management, social publishing and engagement, local advertising, surveys and reporting across 140+ connected platforms including Google Business Profile, Facebook, Instagram, Yelp, Apple Business Connect and TikTok. SOCi exposes a REST API at app.meetsoci.com/api authenticated with a per-user API key issued from the platform's User Settings screen, but the developer reference is served only to signed-in customers; there is no public developer portal, published OpenAPI, or self-serve sign-up.
 
-**API posture (probed 2026-08-05).** SOCi runs a live REST API at `https://app.meetsoci.com/api`
-authenticated with a per-user SOCi API key issued from User Settings inside the platform. The endpoint
-reference at `https://uni-select.meetsoci.com/docs/index.html` serves the SOCi application sign-in page
-to anonymous visitors, and `developers.meetsoci.com` redirects to the customer login — so the
-operation-level contract is customer-only. No OpenAPI, GraphQL SDL, MCP server, A2A agent card,
-webhook catalog, first-party SDK or `/.well-known/` document was found on any SOCi host.
+**Areas:** Company · Marketing · Local Marketing · Multi-Location · Reputation Management · Listings Management · Social Media Management · Reviews · Franchise · Local SEO
 
-- Website: https://www.soci.ai/
-- Platform: https://www.soci.ai/platform/
-- Release notes: https://www.soci.ai/release-notes/
-- Trust center: https://trust.meetsoci.com/
-- Information security: https://www.soci.ai/information-security/
-- Secondary-market listing: https://forgeglobal.com/soci_stock/
+## SOCi on APIs.io
+
+Everything profiled for SOCi is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/soci/](https://apis.io/providers/soci/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [SOCi Platform API](https://apis.io/apis/soci/soci-platform-api/) — SOCi's customer-facing REST API, reachable at https://app.meetsoci.com/api. Authentication uses a per-user SOCi API key issued from User Settings inside the…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Soci Authentication](https://apis.io/security/soci/soci-authentication/)
+- [Soci Domain Security](https://apis.io/security/soci/soci-domain-security/)
+- [Soci Trust Center](https://apis.io/security/soci/soci-trust-center/)
+- [Soci Vulnerability Disclosure](https://apis.io/security/soci/soci-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.soci.ai/)
+- [Support](https://support.meetsoci.com/hc/en-us)
+- [Changelog](https://www.soci.ai/release-notes/)
+- [Blog](https://www.soci.ai/blog/)
+- [Security](https://www.soci.ai/information-security/)
+- [Compliance](https://www.soci.ai/information-security/)
+- [Terms of service](https://www.soci.ai/terms-of-service/)
+- [Privacy policy](https://www.soci.ai/privacy-notice/)
+- [GitHub](https://github.com/meetsoci)
+
+## API Evangelist rating
+
+**Kin Score 28.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 43.4 |
+
+**Agent readiness 5.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 39.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/soci/](https://apis.io/providers/soci/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for SOCi: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/soci/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
